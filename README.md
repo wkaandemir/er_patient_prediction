@@ -1,107 +1,107 @@
-# Emergency Room Patient Volume Prediction
+# Acil Servis Hasta Yoğunluğu Tahmini
 
-A complete machine learning project to predict emergency room patient volume 4 hours in advance using synthetic data and multiple ML algorithms.
+Sentetik veri ve çoklu makine öğrenmesi algoritmaları kullanarak acil servis hasta yoğunluğunu 4 saat önceden tahmin eden kapsamlı bir makine öğrenmesi projesi.
 
-## Project Structure
+## Proje Yapısı
 
 ```
 er-patient-prediction/
-├── er_patient_prediction.ipynb    # Main Jupyter notebook with complete analysis
-├── er_prediction_script.py        # Python script version (standalone)
-├── setup_and_run.sh              # Automated setup script
-├── requirements.txt               # Project dependencies
-└── README.md                     # This file
+├── er_patient_prediction.ipynb    # Tam analiz içeren ana Jupyter notebook
+├── er_prediction_script.py        # Python script versiyonu (bağımsız)
+├── setup_and_run.sh              # Otomatik kurulum scripti
+├── requirements.txt               # Proje bağımlılıkları
+└── README.md                     # Bu dosya
 ```
 
-## Target Metrics
+## Hedef Metrikler
 
-- **MAE (Mean Absolute Error)**: < 3 patients
-- **MAPE (Mean Absolute Percentage Error)**: < 20%
-- **R² (Coefficient of Determination)**: > 0.70
+- **MAE (Ortalama Mutlak Hata)**: < 3 hasta
+- **MAPE (Ortalama Mutlak Yüzde Hatası)**: < %20
+- **R² (Belirleme Katsayısı)**: > 0.70
 
-## Features
+## Özellikler
 
-The model uses various features to predict patient volume:
+Model, hasta yoğunluğunu tahmin etmek için çeşitli özellikler kullanır:
 
-### Time-based Features
-- Hour of day (cyclical encoding)
-- Day of week (cyclical encoding)
-- Month (cyclical encoding)
-- Holiday indicators
-- Weekend indicators
-- Business hours, night time, rush hours
+### Zaman Tabanlı Özellikler
+- Günün saati (döngüsel kodlama)
+- Haftanın günü (döngüsel kodlama)
+- Ay (döngüsel kodlama)
+- Tatil göstergeleri
+- Hafta sonu göstergeleri
+- Mesai saatleri, gece vakti, yoğun saatler
 
-### Historical Features
-- Lag features (1h, 2h, 4h, 6h, 12h, 24h, 48h, 168h)
-- Rolling statistics (mean, std, max, min) over different windows
+### Geçmiş Veriler
+- Gecikme özellikleri (1s, 2s, 4s, 6s, 12s, 24s, 48s, 168s)
+- Farklı pencereler üzerinden hareketli istatistikler (ortalama, std sapma, max, min)
 
-### Weather Features
-- Temperature
-- Rainfall indicators
-- Rainfall amount
-- Weather interaction features
+### Hava Durumu Özellikleri
+- Sıcaklık
+- Yağış göstergeleri
+- Yağış miktarı
+- Hava durumu etkileşim özellikleri
 
-## Models Implemented
+## Uygulanan Modeller
 
-1. **Linear Regression**: Baseline model with feature scaling
-2. **Random Forest**: Tree-based ensemble method
-3. **XGBoost**: Gradient boosting algorithm
+1. **Doğrusal Regresyon**: Özellik ölçeklendirmeli temel model
+2. **Random Forest**: Ağaç tabanlı topluluk yöntemi
+3. **XGBoost**: Gradyan artırma algoritması
 
-## Quick Start
+## Hızlı Başlangıç
 
-### Option 1: Automated Setup (Recommended)
-Run the setup script which will install all dependencies and verify the installation:
+### Seçenek 1: Otomatik Kurulum (Önerilen)
+Tüm bağımlılıkları kuracak ve kurulumu doğrulayacak kurulum scriptini çalıştırın:
 ```bash
 ./setup_and_run.sh
 ```
 
-### Option 2: Manual Installation
-1. Install required packages:
+### Seçenek 2: Manuel Kurulum
+1. Gerekli paketleri kurun:
 ```bash
 pip3 install --user pandas numpy matplotlib seaborn scikit-learn xgboost jupyter ipykernel
 ```
 
-2. Run the Jupyter notebook:
+2. Jupyter notebook'u çalıştırın:
 ```bash
 jupyter notebook er_patient_prediction.ipynb
 ```
 
-OR run the standalone script:
+VEYA bağımsız scripti çalıştırın:
 ```bash
 python3 er_prediction_script.py
 ```
 
-## Data Generation
+## Veri Üretimi
 
-The project generates synthetic emergency room data with realistic patterns:
+Proje, gerçekçi kalıplarla sentetik acil servis verisi üretir:
 
-- **Hourly patterns**: Higher volume during day, lower at night
-- **Weekly patterns**: Increased volume on weekends
-- **Seasonal patterns**: Flu season effects in winter
-- **Weather impact**: Temperature extremes and rain increase patient volume
-- **Holiday effects**: Higher volume during holidays
+- **Saatlik kalıplar**: Gündüz yüksek, gece düşük yoğunluk
+- **Haftalık kalıplar**: Hafta sonları artan yoğunluk
+- **Mevsimsel kalıplar**: Kışın grip sezonu etkileri
+- **Hava durumu etkisi**: Aşırı sıcaklıklar ve yağmur hasta yoğunluğunu artırır
+- **Tatil etkileri**: Tatillerde yüksek yoğunluk
 
-## Visualizations
+## Görselleştirmeler
 
-The project generates several visualizations:
+Proje çeşitli görselleştirmeler üretir:
 
-1. **Hourly Trends**: Patient count patterns by hour, day of week, month, and day type
-2. **Weather Impact**: Analysis of temperature and rainfall effects
-3. **Model Predictions**: Scatter plots showing predicted vs actual values
-4. **Time Series**: 7-day prediction visualization with error analysis
+1. **Saatlik Eğilimler**: Saat, haftanın günü, ay ve gün tipine göre hasta sayısı kalıpları
+2. **Hava Durumu Etkisi**: Sıcaklık ve yağış etkilerinin analizi
+3. **Model Tahminleri**: Tahmin edilen ve gerçek değerleri gösteren dağılım grafikleri
+4. **Zaman Serileri**: Hata analiziyle 7 günlük tahmin görselleştirmesi
 
-## Results
+## Sonuçlar
 
-The models are evaluated using multiple metrics and visualizations show:
-- Feature importance analysis
-- Prediction accuracy over time
-- Error distribution analysis
-- Model performance comparison
+Modeller çoklu metriklerle değerlendirilir ve görselleştirmeler şunları gösterir:
+- Özellik önem analizi
+- Zaman içinde tahmin doğruluğu
+- Hata dağılım analizi
+- Model performans karşılaştırması
 
-## Usage Notes
+## Kullanım Notları
 
-- The synthetic data mimics realistic emergency room patterns
-- Time-based train/test split maintains temporal integrity
-- Feature engineering includes lag variables and rolling statistics
-- Models are compared on multiple evaluation metrics
-- Visualizations provide insights into data patterns and model performance
+- Sentetik veri gerçekçi acil servis kalıplarını taklit eder
+- Zaman tabanlı eğitim/test bölümü zamansal bütünlüğü korur
+- Özellik mühendisliği gecikme değişkenleri ve hareketli istatistikleri içerir
+- Modeller çoklu değerlendirme metriklerinde karşılaştırılır
+- Görselleştirmeler veri kalıpları ve model performansı hakkında içgörüler sağlar
